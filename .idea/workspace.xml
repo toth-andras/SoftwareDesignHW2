@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="Added data directory.">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/entities/menu/MenuItem.kt" afterDir="false" />
+    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="Reorganized storage architecture.">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -83,6 +84,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/utils" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="crud" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -135,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708170008460</updated>
-      <workItem from="1708170009665" duration="1750000" />
+      <workItem from="1708170009665" duration="2749000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -169,7 +173,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708170894584</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added entity for menu.">
+      <option name="closed" value="true" />
+      <created>1708171790261</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708171790261</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reorganized storage architecture.">
+      <option name="closed" value="true" />
+      <created>1708172284204</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708172284204</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +200,8 @@
     <MESSAGE value="Added basic auth entities" />
     <MESSAGE value="Added basic auth logic." />
     <MESSAGE value="Added data directory." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added data directory." />
+    <MESSAGE value="Added entity for menu." />
+    <MESSAGE value="Reorganized storage architecture." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorganized storage architecture." />
   </component>
 </project>
