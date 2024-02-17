@@ -3,6 +3,8 @@ package org.example
 import org.example.states.ApplicationState
 import org.example.crud.auth.UserStorage
 import org.example.crud.auth.UserStorageJson
+import org.example.crud.menu.MenuItemStorage
+import org.example.crud.menu.MenuItemStorageJson
 import org.example.entities.auth.Session
 import org.example.utils.AuthOutputHelper
 import org.example.utils.ConsoleOutputHelper
@@ -36,6 +38,11 @@ class Application () {
      * Хранилище со всеми пользователями приложения.
      */
     var userStorage: UserStorage = UserStorageJson("data/users.json")
+
+    /**
+     * Хранилища со всеми блюдами.
+     */
+    val menuStorage: MenuItemStorage = MenuItemStorageJson("data/menu.json")
 
 
     /**

@@ -1,5 +1,7 @@
 package org.example.utils
 
+import org.example.entities.menu.MenuItem
+
 
 /**
  * Виды специальны сообщений пользователю.
@@ -35,6 +37,19 @@ class ConsoleOutputHelper {
          */
         fun clearConsole() {
             println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        }
+
+        /**
+         * Отображает на экран содержимое меню
+         */
+        fun displayMenu(menu: Iterable<MenuItem>, interpreter: (MenuItem) -> String = {it.toString()}) {
+            println("================================  \uD83C\uDF7D\uFE0F Меню ================================")
+            if (!menu.any()) {
+                println("В меню не добавлено ни одно блюдо")
+                return
+            }
+            menu.forEach{ "||" + println(interpreter(it)) + "||"}
+            println("==========================================================================================")
         }
     }
 }
