@@ -11,4 +11,6 @@ import kotlinx.serialization.Serializable
  * @param timeToCook время преготовления одной порции блюда.
  */
 @Serializable
-class MenuItem(val id: Int, var name: String, var quantity: Int, var price: Int, var timeToCook: Int) {}
+class MenuItem(var id: Int, var name: String, var quantity: Int, var price: Int, var timeToCook: Int) {
+    constructor(name: String, quantity: Int, price: Int, timeToCook: Int): this(0, name, quantity, price, timeToCook)
+}
