@@ -11,7 +11,7 @@ import org.example.utils.OutputMessageType
  */
 class LogoutCommand(override var description: String = "Выйти из учётной записи.") : Command<Application> {
     override fun execute(argument: Application) {
-        println("Выйти из учётной записи (Y/N): ")
+        print("Выйти из учётной записи (Y/N): ")
         if (readln() == "Y") {
             argument.session.deAuthorizeUser()
             ConsoleOutputHelper.printMessage("Выполнен выход из учётной записи", OutputMessageType.Info)
