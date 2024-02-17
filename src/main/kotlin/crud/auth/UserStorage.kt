@@ -1,21 +1,12 @@
 package org.example.crud.auth
 
+import org.example.crud.Storage
 import org.example.entities.auth.User
 
 /**
  * Представляет обощенный интерфейс для хранилища пользователей приложения.
  */
-interface UserStorage {
-    /**
-     * Инициализирует хранилище.
-     */
-    fun initialize()
-
-    /**
-     * Содержит логику завершения работы с хранилищем.
-     */
-    fun destruct()
-
+interface UserStorage: Storage {
     /**
      * Проверяет, существует ли пользователь с этим логином в системе.
      * @param login логин для проверки.
