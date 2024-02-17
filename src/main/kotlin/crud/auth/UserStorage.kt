@@ -20,7 +20,7 @@ interface UserStorage: Storage {
      * @param password пароль пользователя.
      * @param isAdmin является ли пользователь администратором.
      * @return объект пользователя, добавленный в хранилище.
-     * @exception UserLoginCollisionException пользователь с такми логином уже сууществует.
+     * @exception UserLoginCollisionException пользователь с таким логином уже существует.
      * @exception IllegalArgumentException попытка создать пользователя с пустым логином.
      */
     fun createUser(login: String, password: String, isAdmin: Boolean): User

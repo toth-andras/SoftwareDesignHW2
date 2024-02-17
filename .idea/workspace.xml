@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="Reorganized storage architecture.">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="Changed the architecture of menu entity, so it will provide bigger flexibility.">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708170008460</updated>
-      <workItem from="1708170009665" duration="2749000" />
+      <workItem from="1708170009665" duration="3640000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <option name="closed" value="true" />
@@ -189,7 +188,23 @@
       <option name="project" value="LOCAL" />
       <updated>1708172284204</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started creating crud logic for menu items.">
+      <option name="closed" value="true" />
+      <created>1708172788830</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708172788830</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed the architecture of menu entity, so it will provide bigger flexibility.">
+      <option name="closed" value="true" />
+      <created>1708173055564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708173055564</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +217,8 @@
     <MESSAGE value="Added data directory." />
     <MESSAGE value="Added entity for menu." />
     <MESSAGE value="Reorganized storage architecture." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganized storage architecture." />
+    <MESSAGE value="Started creating crud logic for menu items." />
+    <MESSAGE value="Changed the architecture of menu entity, so it will provide bigger flexibility." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the architecture of menu entity, so it will provide bigger flexibility." />
   </component>
 </project>
