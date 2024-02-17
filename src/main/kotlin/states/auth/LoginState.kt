@@ -3,6 +3,7 @@ package org.example.states.auth
 import org.example.Application
 import org.example.states.ApplicationState
 import org.example.entities.auth.User
+import org.example.states.MainMenuState
 import org.example.utils.AuthInputHelper
 import org.example.utils.ConsoleInputHelper
 import org.example.utils.ConsoleOutputHelper
@@ -42,7 +43,6 @@ class LoginState(application: Application, previousState: ApplicationState? = nu
             OutputMessageType.Success)
         ConsoleInputHelper.readEnterPress()
 
-        // TODO: добавить переход на главное меню
-        application.state = previousState
+        application.state = MainMenuState(application, previousState)
     }
 }
