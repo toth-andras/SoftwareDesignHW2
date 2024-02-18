@@ -11,6 +11,7 @@ import org.example.states.MainMenuState
 import org.example.utils.AuthChecker
 import org.example.utils.CommandReader
 import org.example.utils.ConsoleOutputHelper
+import org.example.utils.menuRepresentation.MenuItemAdminPresentation
 
 /**
  * Состояние приложения, в котором происходит управление меню.
@@ -19,16 +20,11 @@ class ManageMenuState(application: Application, previousState: ApplicationState?
     override fun process() {
         AuthChecker.requireAdmin(application, previousState ?: InitialState(application))
 
-        ConsoleOutputHelper.displayMenu(application.menuStorage.getMenuItems(), this::representMenuItem)
+        ConsoleOutputHelper.displayMenu(application.menuStorage.getMenuItems(), MenuItemAdminPresentation())
 
-        val commandReader = CommandReader<Application>(ManageMenuStateCommandFactory())
+        val commandReader = CommandReader(ManageMenuStateCommandFactory())
         println()
         commandReader.displayCommands()
         commandReader.readAndExecute(application)
-    }
-
-    private fun representMenuItem(menuItem: MenuItem): String {
-        return "${menuItem.id}. ${menuItem.name}: осталось порций: ${menuItem.quantity}," +
-                " цена: ${menuItem.price}, время приготовления: ${menuItem.timeToCook} мин."
     }
 }
