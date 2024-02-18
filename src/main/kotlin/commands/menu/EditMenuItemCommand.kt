@@ -50,6 +50,10 @@ class EditMenuItemCommand(override var description: String = "Изменить �
             menuItemToEdit.timeToCook,
             argument.backCommand)
         menuItemToEdit.timeToCook = newTime ?: return
+
+        ConsoleOutputHelper.printMessage("Данные изменены", OutputMessageType.Success)
+        ConsoleOutputHelper.printMessage("Все заказы, содержащие прежние данные этого блюда, обновлены не будут")
+        ConsoleInputHelper.readEnterPress()
     }
 
     private fun readNewName(message: String,
