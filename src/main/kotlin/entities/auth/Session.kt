@@ -1,6 +1,7 @@
 package org.example.entities.auth
 
 import kotlinx.datetime.*
+import org.example.utils.LocalDateTimeExtension.Companion.now
 
 /**
  * Хранит информацию об авторизованном в данный момент пользователе (при наличии) и дате авторизации.
@@ -38,7 +39,7 @@ class Session {
             return false
         }
         user = userToAuthorize
-        dateOfAuthorization = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+        dateOfAuthorization = LocalDateTime.now()
         return true
     }
 
