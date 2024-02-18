@@ -1,4 +1,4 @@
-package org.example.commands.menu
+package org.example.commands.navigation
 
 import org.example.Application
 import org.example.commands.Command

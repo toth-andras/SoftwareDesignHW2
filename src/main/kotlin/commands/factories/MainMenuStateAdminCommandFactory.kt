@@ -2,8 +2,8 @@ package org.example.commands.factories
 
 import org.example.Application
 import org.example.commands.Command
-import org.example.commands.menu.ManageMenuCommand
-import org.example.commands.menu.MenuStatisticsCommand
+import org.example.commands.navigation.ManageMenuCommand
+import org.example.commands.navigation.MenuStatisticsCommand
 import org.example.commands.navigation.BackCommand
 
 /**
