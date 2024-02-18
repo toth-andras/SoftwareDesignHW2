@@ -8,7 +8,7 @@ class ConsoleInputHelper {
         /**
          * Ожидает, пока пользователь не нажмет на Enter.
          */
-        fun readEnterPress(message: String = "Для продолжения нажмиет Enter") {
+        fun readEnterPress(message: String = "Для продолжения нажмите Enter") {
             println(message)
             readln()
         }
