@@ -1,12 +1,8 @@
 package org.example.utils
 
 import org.example.entities.menu.MenuItem
+import org.example.utils.orderPresentation.MenuItemPresentationStrategy
 
-
-/**
- * Виды специальны сообщений пользователю.
- */
-enum class OutputMessageType {Error, Warning, Success, Info}
 
 /**
  * Представляет функционал для вывода информации на консоль.
@@ -42,14 +38,19 @@ class ConsoleOutputHelper {
         /**
          * Отображает на экран содержимое меню
          */
-        fun displayMenu(menu: Iterable<MenuItem>, interpreter: (MenuItem) -> String = {it.toString()}) {
+        fun displayMenu(menu: Iterable<MenuItem>, menuItemPresenter: MenuItemPresentationStrategy) {
             println("================================  \uD83C\uDF7D\uFE0F Меню ================================")
             if (!menu.any()) {
                 println("В меню не добавлено ни одно блюдо")
                 return
             }
-            menu.forEach{ "||" + println(interpreter(it)) + "||"}
+            menu.forEach{ "||" + println(menuItemPresenter.presentMenuItem(it)) + "||"}
             println("==========================================================================================")
         }
     }
 }
+
+/**
+ * Виды специальны сообщений пользователю.
+ */
+enum class OutputMessageType {Error, Warning, Success, Info}
