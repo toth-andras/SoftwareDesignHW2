@@ -9,6 +9,8 @@ import org.example.states.menu.MenuStatisticsState
  */
 class MenuStatisticsCommand(override var description: String = "Статистика блюд") : Command<Application> {
     override fun execute(argument: Application) {
+        // TODO: убрать заглушку
+        return
         argument.state = MenuStatisticsState(argument, argument.state)
     }
 }
