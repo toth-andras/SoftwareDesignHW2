@@ -23,7 +23,7 @@ class ConsoleInputHelper {
             do {
                 print(message)
                 str = readln()
-                if (str.trim().isEmpty()) {
+                if (str.trim().isBlank()) {
                     ConsoleOutputHelper.printMessage("Строка не может быть пустой, повторите ввод!", OutputMessageType.Error)
                     str = ""
                 }
