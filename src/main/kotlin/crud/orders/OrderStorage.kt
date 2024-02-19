@@ -16,6 +16,12 @@ interface OrderStorage: Storage {
     fun getOrders(): Iterable<Order>
 
     /**
+     * Возвращает все заказы пользователя с переданным идентификатором.
+     * @param userId идентификатор пользователя.
+     */
+    fun getUserOrders(userId: Int): Iterable<Order>
+
+    /**
      * Возвращает заказ с переданным идентификатором.
      * @param id идентификатор заказа.
      * @return заказ с переданным идентифкатором или null,

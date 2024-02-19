@@ -38,6 +38,8 @@ class OrderStorageJson(private val sourcePath: String): OrderStorage {
 
     override fun getOrders(): Iterable<Order> = _orders.values
 
+    override fun getUserOrders(userId: Int): Iterable<Order> = _orders.values.filter { it.userId == userId }
+
     override fun getOrder(id: Int): Order? = _orders[id]
 
     override fun createOrder(user: User, menuItems: List<MenuItem>): Order {
