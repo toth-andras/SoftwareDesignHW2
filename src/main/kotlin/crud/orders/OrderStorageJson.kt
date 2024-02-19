@@ -45,6 +45,7 @@ class OrderStorageJson(private val sourcePath: String): OrderStorage {
     override fun createOrder(user: User, menuItems: List<MenuItem>): Order {
         val order = Order(_nextId++, user, menuItems)
         _orders[order.id] = order
+        save()
 
         return order
     }
@@ -55,12 +56,14 @@ class OrderStorageJson(private val sourcePath: String): OrderStorage {
         }
 
         _orders.remove(id)
+        save()
         return true
     }
 
     override fun addOrder(order: Order) {
         order.id = _nextId++
         _orders[order.id] = order
+        save()
     }
 
     private fun save() {

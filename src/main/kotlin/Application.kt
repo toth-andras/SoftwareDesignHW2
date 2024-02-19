@@ -5,6 +5,8 @@ import org.example.crud.auth.UserStorage
 import org.example.crud.auth.UserStorageJson
 import org.example.crud.menu.MenuItemStorage
 import org.example.crud.menu.MenuItemStorageJson
+import org.example.crud.orders.OrderStorage
+import org.example.crud.orders.OrderStorageJson
 import org.example.entities.auth.Session
 import org.example.utils.AuthOutputHelper
 import org.example.utils.ConsoleOutputHelper
@@ -43,6 +45,11 @@ class Application () {
      * Хранилища со всеми блюдами.
      */
     val menuStorage: MenuItemStorage = MenuItemStorageJson("data/menu.json")
+
+    /**
+     * Хранилище со всеми заказами.
+     */
+    val orderStorage: OrderStorage = OrderStorageJson("data/orders.json")
 
 
     /**

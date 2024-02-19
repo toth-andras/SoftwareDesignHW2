@@ -6,6 +6,7 @@ fun main() {
     application.state = InitialState(application)
     application.userStorage.initialize()
     application.menuStorage.initialize()
+    application.orderStorage.initialize()
 
     while(!application.exitRequired) {
         application.process()
@@ -13,4 +14,5 @@ fun main() {
 
     application.userStorage.destruct()
     application.menuStorage.destruct()
+    application.orderStorage.destruct()
 }
