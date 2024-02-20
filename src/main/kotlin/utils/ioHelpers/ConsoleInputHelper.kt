@@ -1,4 +1,4 @@
-package org.example.utils
+package org.example.utils.ioHelpers
 
 /**
  * Представляет функционал для считывания информации с консоли.
@@ -24,7 +24,10 @@ class ConsoleInputHelper {
                 print(message)
                 str = readln()
                 if (str.trim().isBlank()) {
-                    ConsoleOutputHelper.printMessage("Строка не может быть пустой, повторите ввод!", OutputMessageType.Error)
+                    ConsoleOutputHelper.printMessage(
+                        "Строка не может быть пустой, повторите ввод!",
+                        OutputMessageType.Error
+                    )
                     str = ""
                 }
             } while (str == "")

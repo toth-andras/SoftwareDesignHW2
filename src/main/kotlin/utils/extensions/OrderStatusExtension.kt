@@ -1,6 +1,7 @@
-package org.example.utils
+package org.example.utils.extensions
 
 import org.example.entities.orders.OrderStatus
+import org.example.utils.StringColorizer
 
 class OrderStatusExtension {
     companion object {

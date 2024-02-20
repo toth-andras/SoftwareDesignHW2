@@ -4,9 +4,9 @@ import org.example.Application
 import org.example.commands.Command
 import org.example.crud.menu.MenuItemStorage
 import org.example.entities.menu.MenuItem
-import org.example.utils.ConsoleInputHelper
-import org.example.utils.ConsoleOutputHelper
-import org.example.utils.OutputMessageType
+import org.example.utils.ioHelpers.ConsoleInputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
+import org.example.utils.ioHelpers.OutputMessageType
 
 /**
  * Команда модификациии данных блюда.

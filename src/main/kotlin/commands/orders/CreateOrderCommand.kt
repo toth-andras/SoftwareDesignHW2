@@ -3,9 +3,9 @@ package org.example.commands.orders
 import org.example.Application
 import org.example.commands.Command
 import org.example.entities.menu.MenuItem
-import org.example.utils.ConsoleInputHelper
-import org.example.utils.ConsoleOutputHelper
-import org.example.utils.OutputMessageType
+import org.example.utils.ioHelpers.ConsoleInputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
+import org.example.utils.ioHelpers.OutputMessageType
 import org.example.utils.menuRepresentation.MenuItemVisitorPresentation
 import org.example.utils.orderPresentation.OrderVisitorPresentation
 

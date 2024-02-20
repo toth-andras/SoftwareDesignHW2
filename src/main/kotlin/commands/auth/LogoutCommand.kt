@@ -3,8 +3,8 @@ package org.example.commands.auth
 import org.example.Application
 import org.example.commands.Command
 import org.example.states.InitialState
-import org.example.utils.ConsoleOutputHelper
-import org.example.utils.OutputMessageType
+import org.example.utils.ioHelpers.ConsoleOutputHelper
+import org.example.utils.ioHelpers.OutputMessageType
 
 /**
  * Команда, переводящая приложение в состояние выхода из учётной записи.

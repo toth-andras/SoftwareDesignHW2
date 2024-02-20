@@ -4,9 +4,9 @@ import org.example.Application
 import org.example.commands.Command
 import org.example.entities.orders.Order
 import org.example.entities.orders.OrderStatus
-import org.example.utils.ConsoleInputHelper
-import org.example.utils.ConsoleOutputHelper
-import org.example.utils.OutputMessageType
+import org.example.utils.ioHelpers.ConsoleInputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
+import org.example.utils.ioHelpers.OutputMessageType
 import org.example.utils.orderPresentation.OrderAdminPresentation
 import org.example.utils.orderPresentation.OrderVisitorShortPresentation
 

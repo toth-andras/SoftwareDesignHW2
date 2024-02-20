@@ -1,7 +1,7 @@
 package org.example.entities.auth
 
 import kotlinx.datetime.*
-import org.example.utils.LocalDateTimeExtension.Companion.now
+import org.example.utils.extensions.LocalDateTimeExtension.Companion.now
 
 /**
  * Хранит информацию об авторизованном в данный момент пользователе (при наличии) и дате авторизации.

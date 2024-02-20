@@ -1,4 +1,4 @@
-package org.example.utils
+package org.example.utils.extensions
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime

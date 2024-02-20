@@ -1,7 +1,7 @@
-package org.example.utils
+package org.example.utils.ioHelpers
 
 import org.example.entities.auth.Session
-import org.example.utils.LocalDateTimeExtension.Companion.toBeautifulString
+import org.example.utils.extensions.LocalDateTimeExtension.Companion.toBeautifulString
 
 class AuthOutputHelper {
     companion object{

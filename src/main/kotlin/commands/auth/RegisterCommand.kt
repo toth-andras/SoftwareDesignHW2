@@ -3,9 +3,9 @@ package org.example.commands.auth
 import org.example.Application
 import org.example.commands.Command
 import org.example.crud.auth.UserStorage
-import org.example.utils.ConsoleInputHelper
-import org.example.utils.ConsoleOutputHelper
-import org.example.utils.OutputMessageType
+import org.example.utils.ioHelpers.ConsoleInputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
+import org.example.utils.ioHelpers.OutputMessageType
 
 /**
  * Команда, переводящая приложение в состояние регистрации пользователя.

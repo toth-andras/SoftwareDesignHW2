@@ -2,15 +2,11 @@ package org.example.states.menu
 
 import org.example.Application
 import org.example.commands.factories.ManageMenuStateCommandFactory
-import org.example.crud.menu.MenuItemStorage
-import org.example.crud.menu.MenuItemStorageJson
-import org.example.entities.menu.MenuItem
 import org.example.states.ApplicationState
 import org.example.states.InitialState
-import org.example.states.MainMenuState
 import org.example.utils.AuthChecker
 import org.example.utils.CommandReader
-import org.example.utils.ConsoleOutputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
 import org.example.utils.menuRepresentation.MenuItemAdminPresentation
 
 /**

@@ -1,8 +1,8 @@
 package org.example.utils.orderPresentation
 
 import org.example.entities.orders.Order
-import org.example.utils.LocalDateTimeExtension.Companion.toBeautifulString
-import org.example.utils.OrderStatusExtension.Companion.toBeautifulString
+import org.example.utils.extensions.LocalDateTimeExtension.Companion.toBeautifulString
+import org.example.utils.extensions.OrderStatusExtension.Companion.toBeautifulString
 import org.example.utils.orderRepresentation.OrderPresentationStrategy
 
 /**

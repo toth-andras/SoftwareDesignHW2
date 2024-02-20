@@ -4,7 +4,7 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
 import org.example.entities.auth.User
 import org.example.entities.menu.MenuItem
-import org.example.utils.LocalDateTimeExtension.Companion.now
+import org.example.utils.extensions.LocalDateTimeExtension.Companion.now
 
 /**
  * Представляет один заказ посетителя.

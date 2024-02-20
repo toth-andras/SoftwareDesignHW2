@@ -8,8 +8,8 @@ import org.example.crud.menu.MenuItemStorageJson
 import org.example.crud.orders.OrderStorage
 import org.example.crud.orders.OrderStorageJson
 import org.example.entities.auth.Session
-import org.example.utils.AuthOutputHelper
-import org.example.utils.ConsoleOutputHelper
+import org.example.utils.ioHelpers.AuthOutputHelper
+import org.example.utils.ioHelpers.ConsoleOutputHelper
 
 /**
  * Представляет контектс приложения — здесь хранятся данные,
