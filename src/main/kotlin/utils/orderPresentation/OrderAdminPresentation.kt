@@ -10,7 +10,7 @@ import org.example.utils.orderRepresentation.OrderPresentationStrategy
  */
 class OrderAdminPresentation(private var userStorage: UserStorage): OrderPresentationStrategy {
     override fun presentOrder(order: Order): String {
-        return "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} (${order.date.toBeautifulString()}): \n" +
+        return "— ${order.id} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} (${order.date.toBeautifulString()}): \n" +
                 "[${order.menuItems.map{it.name}.joinToString(", "){ it }}]" +
                 "\nСтоимость заказа: ${order.totalPrice}, время приготовления: ${order.timeToCook}" +
                 "\nСтатус: ${order.status}"
