@@ -11,9 +11,12 @@ import org.example.utils.orderRepresentation.OrderPresentationStrategy
  */
 class OrderAdminPresentation(private var userStorage: UserStorage): OrderPresentationStrategy {
     override fun presentOrder(order: Order): String {
-        return "— ${order.id} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} (${order.date.toBeautifulString()}): \n" +
-                "[${order.menuItems.map{it.name}.joinToString(", "){ it }}]" +
-                "\nСтоимость заказа: ${order.totalPrice}, время приготовления: ${order.timeToCook}" +
-                "\nСтатус: ${order.status.toBeautifulString()}\n"
+        val header = "— ${order.id} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} " +
+                "(${order.date.toBeautifulString()}): \n"
+        val ordersBody = "[${order.menuItems.map{it.name}.joinToString(", "){ it }}]"
+        val ending = "\nСтоимость заказа: ${order.totalPrice}, время приготовления: ${order.timeToCook}" +
+                     "\nСтатус: ${order.status.toBeautifulString()}\n"
+
+        return header + ordersBody + ending
     }
 }
