@@ -18,16 +18,15 @@ class ConsoleOutputHelper {
          * @param message сообщение об ошибке.
          */
         fun printMessage(message: String, messageType: OutputMessageType = OutputMessageType.Info) {
-            val color: String = when (messageType) {
-                OutputMessageType.Error -> "\u001b[31m"
-                OutputMessageType.Warning -> "\u001b[33m"
-                OutputMessageType.Success -> "\u001B[32m"
-                OutputMessageType.Info -> "\u001B[34m"
-                else -> "\u001B[37m"
+            val coloredMessage: String = when (messageType) {
+                OutputMessageType.Error -> StringColorizer.toRed(message)
+                OutputMessageType.Warning -> StringColorizer.toYellow(message)
+                OutputMessageType.Success -> StringColorizer.toGreen(message)
+                OutputMessageType.Info -> StringColorizer.toBlue(message)
+                else -> message
             }
-            val reset = "\u001b[0m"
 
-            println(color + message + reset)
+            println(coloredMessage)
         }
 
         /**
