@@ -6,7 +6,8 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 
 /**
- * Расширяет функционал структуры данных LocalDateTimeExtension.
+ * Расширяет функционал класса LocalDateTimeExtension.
+ * @see LocalDateTime
  */
 class LocalDateTimeExtension {
     companion object {
