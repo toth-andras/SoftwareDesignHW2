@@ -24,7 +24,7 @@ import org.example.utils.extensions.LocalDateTimeExtension.Companion.now
 @Serializable
 class Order private constructor(var id: Int,
                                 val userId: Int,
-                                var menuItems: List<MenuItem>,
+                                var menuItems: MutableList<MenuItem>,
                                 var status: OrderStatus,
                                 var priority: Int,
                                 var totalPrice: Int,
@@ -42,7 +42,7 @@ class Order private constructor(var id: Int,
                 menuItems: Iterable<MenuItem>,
                 priority: Int = 0,
                 date: LocalDateTime = LocalDateTime.now())
-            : this (id, user.id, menuItems.toList(), OrderStatus.Created, priority, menuItems.sumOf { it.price }, menuItems.sumOf { it.timeToCook }, date)
+            : this (id, user.id, menuItems.toMutableList(), OrderStatus.Created, priority, menuItems.sumOf { it.price }, menuItems.sumOf { it.timeToCook }, date)
 
     /**
      * Добавляет в заказ блюдо.
