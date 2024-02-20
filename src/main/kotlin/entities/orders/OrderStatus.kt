@@ -8,5 +8,6 @@ enum class OrderStatus {
     OnCook,
     Ready,
     Cancelled,
-    Paid
+    Paid,
+    UnderModification
 }
