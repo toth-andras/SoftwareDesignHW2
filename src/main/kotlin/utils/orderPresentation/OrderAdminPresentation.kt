@@ -3,6 +3,7 @@ package org.example.utils.orderPresentation
 import org.example.crud.auth.UserStorage
 import org.example.entities.orders.Order
 import org.example.utils.LocalDateTimeExtension.Companion.toBeautifulString
+import org.example.utils.OrderStatusExtension.Companion.toBeautifulString
 import org.example.utils.orderRepresentation.OrderPresentationStrategy
 
 /**
@@ -13,6 +14,6 @@ class OrderAdminPresentation(private var userStorage: UserStorage): OrderPresent
         return "— ${order.id} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} (${order.date.toBeautifulString()}): \n" +
                 "[${order.menuItems.map{it.name}.joinToString(", "){ it }}]" +
                 "\nСтоимость заказа: ${order.totalPrice}, время приготовления: ${order.timeToCook}" +
-                "\nСтатус: ${order.status}\n"
+                "\nСтатус: ${order.status.toBeautifulString()}\n"
     }
 }
