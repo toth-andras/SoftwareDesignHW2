@@ -55,7 +55,7 @@ class Order private constructor(var id: Int,
         get() = _totalPrice
 
     /**
-     * Время преготовления заказа.
+     * Время приготовления заказа.
      */
     val timeToCook: Int
         get() = _timeToCook
