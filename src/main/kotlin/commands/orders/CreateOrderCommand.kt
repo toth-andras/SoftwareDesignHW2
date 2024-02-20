@@ -41,6 +41,13 @@ class CreateOrderCommand(override var description: String = "Добавить з
             }
         } while (menuItemId != -1)
 
+        if (orderItems.isEmpty()) {
+            ConsoleOutputHelper.printMessage("Нельзя создать заказ без блюд!", OutputMessageType.Error)
+            println()
+            ConsoleInputHelper.readEnterPress()
+            return
+        }
+
         val order = argument.orderStorage.createOrder(argument.session.user!!, orderItems)
 
         println("Ваш заказ: ")
