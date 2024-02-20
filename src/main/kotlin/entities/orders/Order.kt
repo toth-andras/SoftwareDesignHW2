@@ -90,9 +90,12 @@ class Order private constructor(var id: Int,
     }
 
     /**
-     * Блокирует все потоки, работающие с объектом, кроме данного
+     * Блокирует внутренний замок заказа.
      */
     fun requestOwnership() = _lock.lock()
 
+    /**
+     * Разблокирует внутренний замок заказа.
+     */
     fun releaseOwnership() = _lock.unlock()
 }
