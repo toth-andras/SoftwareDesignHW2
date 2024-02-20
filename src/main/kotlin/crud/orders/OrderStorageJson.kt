@@ -8,6 +8,7 @@ import org.example.entities.menu.MenuItem
 import org.example.entities.orders.Order
 import java.io.File
 import java.io.IOException
+import java.util.Random
 
 /**
  * Представляет хранилище блюд, хранящее данные в формате json.
@@ -15,7 +16,8 @@ import java.io.IOException
  */
 class OrderStorageJson(private val sourcePath: String): OrderStorage {
     private var _orders: MutableMap<Int, Order> = mutableMapOf()
-    private var _nextId = 0
+    private var _nextId: Int = 0
+    private val _random: Random = Random()
 
     override fun initialize() {
         _orders = try {
@@ -44,6 +46,7 @@ class OrderStorageJson(private val sourcePath: String): OrderStorage {
 
     override fun createOrder(user: User, menuItems: List<MenuItem>): Order {
         val order = Order(_nextId++, user, menuItems)
+        order.priority = _random.nextInt(0, 10)
         _orders[order.id] = order
         save()
 
