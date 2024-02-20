@@ -1,7 +1,11 @@
 package org.example.utils
 
 import org.example.entities.menu.MenuItem
+import org.example.entities.orders.Order
 import org.example.utils.orderPresentation.MenuItemPresentationStrategy
+import org.example.utils.orderPresentation.OrderAdminPresentation
+import org.example.utils.orderPresentation.OrderVisitorPresentation
+import org.example.utils.orderRepresentation.OrderPresentationStrategy
 
 
 /**
@@ -36,7 +40,9 @@ class ConsoleOutputHelper {
         }
 
         /**
-         * Отображает на экран содержимое меню
+         * Отображает на экран содержимое меню.
+         * @param menu меню.
+         * @param menuItemPresenter генератор строчного представления одного блюда.
          */
         fun displayMenu(menu: Iterable<MenuItem>, menuItemPresenter: MenuItemPresentationStrategy) {
             println("================================  \uD83C\uDF7D\uFE0F Меню ================================")
@@ -46,6 +52,24 @@ class ConsoleOutputHelper {
             }
             menu.forEach{ "||" + println(menuItemPresenter.presentMenuItem(it)) + "||"}
             println("==========================================================================================")
+        }
+
+        /**
+         * Отображает на экран переданные заказы.
+         * @param orders заказы.
+         * @param orderPresenter генератор строчного представления одного заказа.
+         * @param isAdmin является ли пользователь, для которого отображаются заказы,
+         * администратором (необходимо для генерации текста заголовка).
+         */
+        fun displayOrders(orders: Iterable<Order>, orderPresenter: OrderPresentationStrategy, isAdmin: Boolean = false) {
+            println("\n\n\n")
+            println(if (isAdmin) "Заказы" else "Мои заказы")
+            println("=========================================================================================")
+            val ordersToShow = orders.sortedBy { it.date }.asReversed()
+            ordersToShow.forEach{ println(orderPresenter.presentOrder(it)); println() }
+
+            println()
+            ConsoleInputHelper.readEnterPress()
         }
     }
 }
