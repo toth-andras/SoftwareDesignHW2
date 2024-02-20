@@ -7,6 +7,7 @@ import org.example.entities.orders.OrderStatus
 import org.example.utils.ConsoleInputHelper
 import org.example.utils.ConsoleOutputHelper
 import org.example.utils.OutputMessageType
+import org.example.utils.orderPresentation.OrderAdminPresentation
 import org.example.utils.orderPresentation.OrderVisitorShortPresentation
 
 /**
@@ -14,7 +15,15 @@ import org.example.utils.orderPresentation.OrderVisitorShortPresentation
  */
 class CancelOrderCommand(override var description: String = "Отменить заказ") : Command<Application> {
     override fun execute(argument: Application) {
-        ConsoleOutputHelper.displayOrders(argument.orderStorage.getUserOrders(argument.session.user!!.id), OrderVisitorShortPresentation())
+        val isAdmin = argument.session.user!!.isAdmin
+
+        val statusFilter: (Order) -> Boolean = {it.status == OrderStatus.Created || it.status == OrderStatus.OnCook}
+        val orders =
+            if (isAdmin) argument.orderStorage.getOrders().filter(statusFilter)
+            else argument.orderStorage.getUserOrders(argument.session.user!!.id).filter(statusFilter)
+
+        val presenter = if (isAdmin) OrderAdminPresentation(argument.userStorage) else OrderVisitorShortPresentation()
+        ConsoleOutputHelper.displayOrders(orders, presenter)
         println()
 
         var orderToCancel: Order? = null
