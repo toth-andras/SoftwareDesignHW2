@@ -75,6 +75,6 @@ class ConsoleOutputHelper {
 }
 
 /**
- * Виды специальны сообщений пользователю.
+ * Виды специальных сообщений пользователю.
  */
 enum class OutputMessageType {Error, Warning, Success, Info}
