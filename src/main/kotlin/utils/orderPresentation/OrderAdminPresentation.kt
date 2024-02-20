@@ -4,6 +4,7 @@ import org.example.crud.auth.UserStorage
 import org.example.entities.orders.Order
 import org.example.utils.LocalDateTimeExtension.Companion.toBeautifulString
 import org.example.utils.OrderStatusExtension.Companion.toBeautifulString
+import org.example.utils.StringColorizer
 import org.example.utils.orderRepresentation.OrderPresentationStrategy
 
 /**
@@ -11,7 +12,7 @@ import org.example.utils.orderRepresentation.OrderPresentationStrategy
  */
 class OrderAdminPresentation(private var userStorage: UserStorage): OrderPresentationStrategy {
     override fun presentOrder(order: Order): String {
-        val header = "— ${order.id} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} " +
+        val header = "— ${StringColorizer.toYellow("${order.id}")} —\n" + "Заказ от пользователя ${userStorage.getUser(order.userId)?.login ?: ""} " +
                 "(${order.date.toBeautifulString()}): \n"
         val ordersBody = "[${order.menuItems.map{it.name}.joinToString(", "){ it }}]"
         val ending = "\nСтоимость заказа: ${order.totalPrice}, время приготовления: ${order.timeToCook}" +
