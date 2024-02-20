@@ -1,0 +1,47 @@
+package org.example.commands.orders
+
+import org.example.Application
+import org.example.commands.Command
+import org.example.entities.orders.Order
+import org.example.entities.orders.OrderStatus
+import org.example.utils.ConsoleInputHelper
+import org.example.utils.ConsoleOutputHelper
+import org.example.utils.OutputMessageType
+import org.example.utils.orderPresentation.OrderVisitorPresentation
+
+/**
+ * Команда оплаты заказа.
+ */
+class PayForOrderCommand(override var description: String = "Оплатить заказ") : Command<Application> {
+    override fun execute(argument: Application) {
+        var orderToPay: Order? = null
+
+        do {
+            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа: ", argument.backCommand) ?: return
+            orderToPay = argument.orderStorage.getOrder(id)
+            if (orderToPay == null) {
+                ConsoleOutputHelper.printMessage("Заказа с таким номером нет!", OutputMessageType.Error)
+                continue
+            }
+            if (orderToPay.status == OrderStatus.Paid) {
+                ConsoleOutputHelper.printMessage("Заказ уже оплачен")
+                orderToPay = null
+                continue
+            }
+            if (orderToPay.status != OrderStatus.Ready) {
+                ConsoleOutputHelper.printMessage("Оплатить можно только готовый заказ!", OutputMessageType.Error)
+                orderToPay = null
+                continue
+            }
+            // Проверка на то, что пользователь является автором заказа, не добавлнеа,
+            // чтобы один посетитель мог заплатить за другого.
+        } while (orderToPay == null)
+
+        orderToPay.status = OrderStatus.Paid
+        ConsoleOutputHelper.printMessage("Заказ оплачен:")
+        println(OrderVisitorPresentation().presentOrder(orderToPay))
+        println()
+        ConsoleInputHelper.readEnterPress()
+    }
+
+}

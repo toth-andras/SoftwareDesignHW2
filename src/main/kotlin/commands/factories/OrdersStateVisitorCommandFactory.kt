@@ -5,6 +5,7 @@ import org.example.commands.Command
 import org.example.commands.navigation.BackCommand
 import org.example.commands.orders.CancelOrderCommand
 import org.example.commands.orders.CreateOrderCommand
+import org.example.commands.orders.PayForOrderCommand
 import org.example.commands.orders.ShowOrdersCommand
 
 /**
@@ -12,6 +13,6 @@ import org.example.commands.orders.ShowOrdersCommand
  */
 class OrdersStateVisitorCommandFactory: CommandFactory<Application> {
     override fun createCommandSet(): Iterable<Command<Application>> {
-        return listOf(ShowOrdersCommand(), CreateOrderCommand(), CancelOrderCommand(), BackCommand())
+        return listOf(ShowOrdersCommand(), CreateOrderCommand(), PayForOrderCommand(), CancelOrderCommand(), BackCommand())
     }
 }
