@@ -1,5 +1,8 @@
 package org.example.utils.ioHelpers
 
+import org.example.crud.menu.MenuItemStorage
+import org.example.entities.menu.MenuItem
+
 /**
  * Представляет функционал для считывания информации с консоли.
  */
@@ -79,6 +82,56 @@ class ConsoleInputHelper {
             } while (number == null)
 
             return number
+        }
+
+        /**
+         * Считывает от пользователя набор блюд и ожидаемое количетво их порций
+         */
+        fun readMenuItems(menuStorage: MenuItemStorage, backCommand: String): List<Pair<MenuItem, Int>>? {
+            val items: MutableList<Pair<MenuItem, Int>> = mutableListOf()
+
+            do {
+                val menuItemId: Int = readIntCheckBackCommand("Введите номер блюда, которое хотели" +
+                        " бы добавить в заказ, либо -1, чтобы прекратить ввод: ", backCommand) ?: return null
+
+                if (menuItemId == -1) {
+                    break
+                }
+
+                val menuItem = menuStorage.getMenuItem(menuItemId)
+                if (menuItem == null) {
+                    ConsoleOutputHelper.printMessage("Блюда с таким номером нет в меню!", OutputMessageType.Error)
+                    continue
+                }
+
+                ConsoleOutputHelper.printMessage("Доступно ${menuItem.quantity} порций блюда")
+
+                val num = readPortionsNumber(menuItem, backCommand) ?: return null
+                items.addLast(Pair(menuItem, num))
+            } while (menuItemId != -1)
+
+            return items
+        }
+
+        private fun readPortionsNumber(menuItem: MenuItem, backCommand: String): Int? {
+            var portions: Int? = null
+            do {
+                portions = ConsoleInputHelper.readIntCheckBackCommand("Введите количество порций: ", backCommand) ?: return null
+
+                if (portions <= 0) {
+                    ConsoleOutputHelper.printMessage("Количество порций должно быть положительным!", OutputMessageType.Error)
+                    portions = null
+                    continue
+                }
+
+                if (portions > menuItem.quantity) {
+                    ConsoleOutputHelper.printMessage("Доступно всего ${menuItem.quantity} порций!", OutputMessageType.Error)
+                    portions = null
+                    continue
+                }
+            } while (portions == null)
+
+            return portions
         }
     }
 }
