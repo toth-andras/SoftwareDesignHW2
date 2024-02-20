@@ -67,9 +67,6 @@ class ConsoleOutputHelper {
             println("=========================================================================================")
             val ordersToShow = orders.sortedBy { it.date }.asReversed()
             ordersToShow.forEach{ println(orderPresenter.presentOrder(it)); println() }
-
-            println()
-            ConsoleInputHelper.readEnterPress()
         }
     }
 }

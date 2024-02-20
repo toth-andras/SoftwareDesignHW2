@@ -19,7 +19,7 @@ class ShowOrdersCommand(override var description: String = "Просмотрет
             if (isAdmin) argument.orderStorage.getOrders()
             else argument.orderStorage.getUserOrders(argument.session.user!!.id)
         ConsoleOutputHelper.displayOrders(orders, presenter, isAdmin)
-
+        println()
         ConsoleInputHelper.readEnterPress()
     }
 }
