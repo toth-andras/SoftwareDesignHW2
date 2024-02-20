@@ -49,7 +49,7 @@ class Order private constructor(var id: Int,
      * @param menuItem блюдо, которое необходимо добавить.
      */
     fun addMenuItem(menuItem: MenuItem) {
-        if (status != OrderStatus.Created && status != OrderStatus.OnCook) {
+        if (status != OrderStatus.UnderModification) {
             throw OrderModificationProhibitedException(status)
         }
 
