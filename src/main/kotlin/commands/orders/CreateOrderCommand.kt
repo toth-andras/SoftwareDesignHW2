@@ -24,7 +24,7 @@ class CreateOrderCommand(override var description: String = "Добавить з
         }
         val menuItems: MutableList<MenuItem> = mutableListOf()
         orderItems.forEach {
-            it.first.order(it.second)
+            it.first.quantity -= it.second
             for (i in 1..it.second) {
                 menuItems.addLast(it.first)
             }

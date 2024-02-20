@@ -20,7 +20,6 @@ class OrderStatusExtension {
                 OrderStatus.Ready -> StringColorizer.toGreen("Готов")
                 OrderStatus.Cancelled -> StringColorizer.toRed("Отменен")
                 OrderStatus.Paid -> StringColorizer.toPurple("Оплачен")
-                OrderStatus.UnderModification -> "Изменяется"
                 else -> ""
             }
         }

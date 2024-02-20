@@ -22,27 +22,21 @@ class ModifyOrderCommand(override var description: String = "Изменить с
 
         val orderToChange = readOrder(argument) ?: return
 
-        // Меняем статус заказа на специальный статус, чтобы заказ не был принят
-        // в обработку в то время, когда модифицируется.
-        val previousStatus = orderToChange.status
-        orderToChange.status = OrderStatus.UnderModification
-
         ConsoleOutputHelper.displayMenu(argument.menuStorage.getMenuItems().filter { it.quantity > 0 }, MenuItemVisitorPresentation())
         println()
 
         val orderItems: List<Pair<MenuItem, Int>>? = ConsoleInputHelper.readMenuItems(argument.menuStorage, argument.backCommand)
         if (orderItems.isNullOrEmpty()) {
-            orderToChange.status = previousStatus
+            orderToChange.releaseOwnership()
             return
         }
         orderItems.forEach {
-            it.first.order(it.second)
-            for (i in 1..it.second) {
-                orderToChange.addMenuItem(it.first)
-            }
+            orderToChange.addMenuItem(it.first, it.second)
         }
 
-        orderToChange.status = previousStatus
+        // Заканчиваем обновление заказа и освобождаем его lock.
+        orderToChange.releaseOwnership()
+
         ConsoleOutputHelper.printMessage("Заказ обновлен", OutputMessageType.Success)
         println("Ваш заказ:")
         println(OrderVisitorPresentation().presentOrder(orderToChange))
@@ -64,7 +58,16 @@ class ModifyOrderCommand(override var description: String = "Изменить с
                 ConsoleOutputHelper.printMessage("Нет прав модификации данного заказа!", OutputMessageType.Error)
                 continue
             }
+
+            // Здесь мы пытаемся захватить mutex. Возможны два варианта:
+            // - 1: lock свободен, тогда поток данный поток захватывает его, вынуждая поток,
+            // выполняющий заказ, ждать завершение модификации;
+            //
+            // - 2: lock захвачен, тогда поток ждет, пока обрабатывающий поток выполнит очередной
+            // цикл работы над заказом и освободит его, и проверяет, не готов ли заказ.
+            orderToChange.requestOwnership()
             if (orderToChange.status != OrderStatus.Created && orderToChange.status != OrderStatus.OnCook) {
+                orderToChange.releaseOwnership()
                 orderToChange = null
                 ConsoleOutputHelper.printMessage("Нельзя изменять заказ после того, как он готов!", OutputMessageType.Error)
                 continue

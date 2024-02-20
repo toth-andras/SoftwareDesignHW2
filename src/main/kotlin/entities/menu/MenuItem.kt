@@ -27,17 +27,4 @@ class MenuItem(var id: Int, var name: String, private var _quantity: Int, var pr
             require(value >= 0) {"Количество порций блюда не может быть отрицательным. Текущее значение: $value"}
             _quantity = value
         }
-
-    /**
-     * Уменьшает количетсво порций блюда, тем самым симулируя его заказ.
-     * @param portions количество порций в заказе.
-     * @throws NotEnoughPortionsException вызывается при попытке заказать больше порций, чем есть в наличии.
-     */
-    fun order(portions: Int = 1) {
-        if (portions > quantity) {
-            throw NotEnoughPortionsException(portions, quantity)
-        }
-
-        _quantity -= portions
-    }
 }
