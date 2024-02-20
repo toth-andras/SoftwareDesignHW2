@@ -1,6 +1,5 @@
 package org.example.entities.orders
 
-import kotlinx.coroutines.sync.Mutex
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
 import org.example.entities.auth.User
