@@ -42,14 +42,17 @@ class CancelOrderCommand(override var description: String = "Отменить з
                 continue
             }
 
+            orderToCancel.requestOwnership()
             if (orderToCancel.status != OrderStatus.Created && orderToCancel.status != OrderStatus.OnCook) {
                 ConsoleOutputHelper.printMessage("Нельзя отменить заказ после того, как он готов!", OutputMessageType.Error)
+                orderToCancel.releaseOwnership()
                 orderToCancel = null
                 continue
             }
         } while (orderToCancel == null)
 
         orderToCancel.status = OrderStatus.Cancelled
+        orderToCancel.releaseOwnership()
         ConsoleOutputHelper.printMessage("Заказ отменён", OutputMessageType.Success)
         ConsoleInputHelper.readEnterPress()
     }

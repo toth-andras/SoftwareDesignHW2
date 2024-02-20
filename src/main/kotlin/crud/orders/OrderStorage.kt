@@ -4,6 +4,7 @@ import org.example.crud.Storage
 import org.example.entities.auth.User
 import org.example.entities.menu.MenuItem
 import org.example.entities.orders.Order
+import org.example.observation.Event
 
 /**
  * Представляет обобщенный интерфейс хранилища заказов.
@@ -49,4 +50,9 @@ interface OrderStorage: Storage {
      * @return true, если заказ с переданным идентификатором был удален и false иначе.
      */
     fun removeOrder(id: Int): Boolean
+
+    /**
+     * Вызывается при добавлении в хранилище нового заказа.
+     */
+    val orderCreated: Event<Order>
 }
