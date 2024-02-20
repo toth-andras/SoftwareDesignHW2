@@ -9,8 +9,12 @@ import org.example.utils.orderRepresentation.OrderPresentationStrategy
  */
 class OrderVisitorPresentation: OrderPresentationStrategy {
     override fun presentOrder(order: Order): String {
-        return "— ${order.id} —\n" + "Заказ от ${order.date.toBeautifulString()}: \n" +
-                order.menuItems.joinToString(separator = "\n-\t", prefix = "-\t") { it.name  } +
-                "\n----- Итого: ${order.totalPrice} \uD83E\uDE99 -----  \nСтатус: ${order.status}"
+        val header = "— ${order.id} —\n" + "Заказ от ${order.date.toBeautifulString()}:\n"
+        val ordersBody = order.menuItems
+            .map{Pair(it.name, it.price)}
+            .joinToString(separator = "\n-\t", prefix = "-\t") {it.first + " ........ " + it.second}
+        val ending = "\nИтого: ${order.totalPrice} \uD83E\uDE99  \nСтатус: ${order.status}"
+
+        return header + ordersBody + ending
     }
 }
