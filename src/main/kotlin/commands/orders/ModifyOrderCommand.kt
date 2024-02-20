@@ -37,7 +37,9 @@ class ModifyOrderCommand(override var description: String = "Изменить с
         }
         orderItems.forEach {
             it.first.order(it.second)
-            orderToChange.addMenuItem(it.first)
+            for (i in 1..it.second) {
+                orderToChange.addMenuItem(it.first)
+            }
         }
 
         orderToChange.status = previousStatus

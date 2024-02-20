@@ -22,9 +22,15 @@ class CreateOrderCommand(override var description: String = "Добавить з
             ConsoleInputHelper.readEnterPress()
             return
         }
-        orderItems.forEach{it.first.order(it.second)}
+        val menuItems: MutableList<MenuItem> = mutableListOf()
+        orderItems.forEach {
+            it.first.order(it.second)
+            for (i in 1..it.second) {
+                menuItems.addLast(it.first)
+            }
+        }
 
-        val order = argument.orderStorage.createOrder(argument.session.user!!, orderItems.map { it.first })
+        val order = argument.orderStorage.createOrder(argument.session.user!!, menuItems)
 
         println("Ваш заказ: ")
         println(OrderVisitorPresentation().presentOrder(order))
