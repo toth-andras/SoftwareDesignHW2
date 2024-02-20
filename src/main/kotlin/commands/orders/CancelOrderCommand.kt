@@ -7,15 +7,19 @@ import org.example.entities.orders.OrderStatus
 import org.example.utils.ConsoleInputHelper
 import org.example.utils.ConsoleOutputHelper
 import org.example.utils.OutputMessageType
+import org.example.utils.orderPresentation.OrderVisitorShortPresentation
 
 /**
  * Команда, отменяющая заказ. Отменить заказ может его владелец или администратор.
  */
 class CancelOrderCommand(override var description: String = "Отменить заказ") : Command<Application> {
     override fun execute(argument: Application) {
+        ConsoleOutputHelper.displayOrders(argument.orderStorage.getUserOrders(argument.session.user!!.id), OrderVisitorShortPresentation())
+        println()
+
         var orderToCancel: Order? = null
         do {
-            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа: ", argument.backCommand) ?: return
+            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа, который хотите отменить: ", argument.backCommand) ?: return
 
             orderToCancel = argument.orderStorage.getOrder(id)
             if (orderToCancel == null) {

@@ -8,16 +8,18 @@ import org.example.utils.ConsoleInputHelper
 import org.example.utils.ConsoleOutputHelper
 import org.example.utils.OutputMessageType
 import org.example.utils.orderPresentation.OrderVisitorPresentation
+import org.example.utils.orderPresentation.OrderVisitorShortPresentation
 
 /**
  * Команда оплаты заказа.
  */
 class PayForOrderCommand(override var description: String = "Оплатить заказ") : Command<Application> {
     override fun execute(argument: Application) {
+        ConsoleOutputHelper.displayOrders(argument.orderStorage.getUserOrders(argument.session.user!!.id), OrderVisitorShortPresentation())
+        println()
         var orderToPay: Order? = null
-
         do {
-            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа: ", argument.backCommand) ?: return
+            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа, который хотите оплатить: ", argument.backCommand) ?: return
             orderToPay = argument.orderStorage.getOrder(id)
             if (orderToPay == null) {
                 ConsoleOutputHelper.printMessage("Заказа с таким номером нет!", OutputMessageType.Error)
@@ -43,5 +45,4 @@ class PayForOrderCommand(override var description: String = "Оплатить з
         println()
         ConsoleInputHelper.readEnterPress()
     }
-
 }

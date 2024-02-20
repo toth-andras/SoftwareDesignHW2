@@ -13,7 +13,7 @@ class OrderVisitorPresentation: OrderPresentationStrategy {
         val ordersBody = order.menuItems
             .map{Pair(it.name, it.price)}
             .joinToString(separator = "\n-\t", prefix = "-\t") {it.first + " ........ " + it.second}
-        val ending = "\nИтого: ${order.totalPrice} \uD83E\uDE99  \nСтатус: ${order.status}"
+        val ending = "\nИтого: ${order.totalPrice} \uD83E\uDE99  \nСтатус: ${order.status}\n"
 
         return header + ordersBody + ending
     }

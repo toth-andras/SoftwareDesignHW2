@@ -66,7 +66,7 @@ class ConsoleOutputHelper {
             println(if (isAdmin) "Заказы" else "Мои заказы")
             println("=========================================================================================")
             val ordersToShow = orders.sortedBy { it.date }.asReversed()
-            ordersToShow.forEach{ println(orderPresenter.presentOrder(it)); println() }
+            ordersToShow.forEach{ println(orderPresenter.presentOrder(it)) }
         }
     }
 }
