@@ -22,6 +22,6 @@ class Review(val author: String, val mark: Int, val message: String, val date: L
     }
 
     override fun toString(): String {
-        return "$author ($mark/$maxMark): "
+        return "$author ($mark/$maxMark): $message"
     }
 }
