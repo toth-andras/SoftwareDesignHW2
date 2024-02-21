@@ -22,7 +22,7 @@ import kotlin.math.max
                                                  private var _lastPurchaseDate: LocalDateTime?) {
 
     /**
-     * Создает объект, хпанящий статистику.
+     * Создает объект, хранящий статистику.
      * @param id идентификатор объекта.
      * @param menuItemId идентификатор блюда, для которого сохраняется статистика.
      */
