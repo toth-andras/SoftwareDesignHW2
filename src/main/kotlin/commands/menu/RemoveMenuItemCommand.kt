@@ -26,6 +26,7 @@ class RemoveMenuItemCommand(override var description: String = "Удалить �
         } while (itemToRemove == null)
 
         if (argument.menuStorage.removeMenuItem(itemToRemove.id)) {
+            argument.statisticsManager.menuItemRemoved(itemToRemove)
             ConsoleOutputHelper.printMessage("Блюдо удалено из меню", OutputMessageType.Success)
             ConsoleOutputHelper.printMessage("Все оформленные заказы с данным блюдом останутся неизменными")
             ConsoleInputHelper.readEnterPress()

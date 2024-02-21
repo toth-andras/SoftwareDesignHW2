@@ -9,6 +9,8 @@ import org.example.crud.orders.OrderStorage
 import org.example.crud.orders.OrderStorageJson
 import org.example.entities.auth.Session
 import entities.cooking.CookingManager
+import org.example.crud.statistics.MenuItemStatisticsStorageJson
+import org.example.entities.statistics.StatisticsManager
 import org.example.utils.ioHelpers.AuthOutputHelper
 import org.example.utils.ioHelpers.ConsoleOutputHelper
 
@@ -53,9 +55,14 @@ class Application () {
     val orderStorage: OrderStorage = OrderStorageJson("data/orders.json")
 
     /**
-     * Кухня.
+     * Управляющий обработкой заказов.
      */
-    val kitchen: CookingManager = CookingManager(3)
+    val cookingManager: CookingManager = CookingManager(3)
+
+    /**
+     * Управляющий статистикой.
+     */
+    val statisticsManager: StatisticsManager =  StatisticsManager(MenuItemStatisticsStorageJson("data/stats.json"))
 
 
     /**

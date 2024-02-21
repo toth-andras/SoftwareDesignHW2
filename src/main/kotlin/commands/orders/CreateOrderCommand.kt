@@ -31,6 +31,7 @@ class CreateOrderCommand(override var description: String = "Добавить з
         }
 
         val order = argument.orderStorage.createOrder(argument.session.user!!, menuItems)
+        argument.statisticsManager.orderCreated(order)
 
         println("Ваш заказ: ")
         println(OrderVisitorPresentation().presentOrder(order))

@@ -37,6 +37,8 @@ class ModifyOrderCommand(override var description: String = "Изменить с
         // Заканчиваем обновление заказа и освобождаем его lock.
         orderToChange.releaseOwnership()
 
+        argument.statisticsManager.orderUpdated(orderItems.map { it.first })
+
         ConsoleOutputHelper.printMessage("Заказ обновлен", OutputMessageType.Success)
         println("Ваш заказ:")
         println(OrderVisitorPresentation().presentOrder(orderToChange))

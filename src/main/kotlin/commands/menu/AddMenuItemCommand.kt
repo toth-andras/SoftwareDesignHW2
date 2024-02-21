@@ -16,7 +16,8 @@ class AddMenuItemCommand(override var description: String = "Добавить б
         val quantity: Int = readPositiveInt("Введите количество порций в наличии: ", argument.backCommand) ?: return
         val timeToCook: Int = readPositiveInt("Введите время приготовления одной порции в минутах: ", argument.backCommand) ?: return
 
-        argument.menuStorage.createMenuItem(name, quantity, price, timeToCook)
+        val item = argument.menuStorage.createMenuItem(name, quantity, price, timeToCook)
+        argument.statisticsManager.menuItemAdded(item)
         ConsoleOutputHelper.printMessage("Блюдо добавлено в меню", OutputMessageType.Success)
         ConsoleInputHelper.readEnterPress()
     }

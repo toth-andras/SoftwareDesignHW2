@@ -11,15 +11,15 @@ fun main() {
     application.orderStorage.initialize()
     application.orderStorage.getOrders()
         .filter { it.status == OrderStatus.Created || it.status == OrderStatus.OnCook }
-        .forEach{application.kitchen.addTask(CookingTask(it))}
-    application.orderStorage.orderCreated += {application.kitchen.addTask(CookingTask(it))}
+        .forEach{application.cookingManager.addTask(CookingTask(it))}
+    application.orderStorage.orderCreated += {application.cookingManager.addTask(CookingTask(it))}
 
-    application.kitchen.startWorking()
+    application.cookingManager.startWorking()
     while(!application.exitRequired) {
         application.process()
     }
 
-    application.kitchen.stopWorking()
+    application.cookingManager.stopWorking()
     application.userStorage.destruct()
     application.menuStorage.destruct()
     application.orderStorage.destruct()

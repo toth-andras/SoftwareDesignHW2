@@ -53,6 +53,7 @@ class CancelOrderCommand(override var description: String = "Отменить з
 
         orderToCancel.status = OrderStatus.Cancelled
         orderToCancel.releaseOwnership()
+        argument.statisticsManager.orderCancelled(orderToCancel)
         ConsoleOutputHelper.printMessage("Заказ отменён", OutputMessageType.Success)
         ConsoleInputHelper.readEnterPress()
     }

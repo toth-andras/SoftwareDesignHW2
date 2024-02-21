@@ -15,11 +15,29 @@ import org.example.utils.orderPresentation.OrderVisitorShortPresentation
  */
 class PayForOrderCommand(override var description: String = "Оплатить заказ") : Command<Application> {
     override fun execute(argument: Application) {
+
+        val orderToPay = readOrder(argument) ?: return
+        orderToPay.status = OrderStatus.Paid
+        ConsoleOutputHelper.printMessage("Заказ оплачен:")
+        println(OrderVisitorPresentation().presentOrder(orderToPay))
+        println()
+        ConsoleInputHelper.readEnterPress()
+
+        print("Хотели бы Вы оставить на блюда отзыв (Y/N): ")
+        if (readln() != "Y") return
+
+        if (readReview(orderToPay, argument)) {
+            ConsoleOutputHelper.printMessage("Отзыв(ы) сохранены", OutputMessageType.Success)
+            ConsoleInputHelper.readEnterPress()
+        }
+    }
+
+    private fun readOrder(argument: Application): Order? {
         ConsoleOutputHelper.displayOrders(argument.orderStorage.getUserOrders(argument.session.user!!.id), OrderVisitorShortPresentation())
         println()
         var orderToPay: Order? = null
         do {
-            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа, который хотите оплатить: ", argument.backCommand) ?: return
+            val id = ConsoleInputHelper.readIntCheckBackCommand("Введите номер заказа, который хотите оплатить: ", argument.backCommand) ?: return null
             orderToPay = argument.orderStorage.getOrder(id)
             if (orderToPay == null) {
                 ConsoleOutputHelper.printMessage("Заказа с таким номером нет!", OutputMessageType.Error)
@@ -39,10 +57,51 @@ class PayForOrderCommand(override var description: String = "Оплатить з
             // чтобы один посетитель мог заплатить за другого.
         } while (orderToPay == null)
 
-        orderToPay.status = OrderStatus.Paid
-        ConsoleOutputHelper.printMessage("Заказ оплачен:")
-        println(OrderVisitorPresentation().presentOrder(orderToPay))
-        println()
-        ConsoleInputHelper.readEnterPress()
+        return orderToPay
+    }
+
+    private fun readReview(order: Order, argument: Application): Boolean {
+        val outputSet: MutableSet<String> = mutableSetOf()
+        order.menuItems.forEach{outputSet.add("${it.id}. ${it.name}\n")}
+        outputSet.forEach{ print(it) }
+
+        var exit = false
+        do {
+            val itemId = ConsoleInputHelper.readIntCheckBackCommand("Введите номер блюда, на которое хотели" +
+                    " бы оставить отзыв, или -1, чтобы завершить составление отзыва: ", argument.backCommand) ?: return false
+
+            if (itemId == -1) {
+                exit = true
+                continue
+            }
+
+            val itemToReview = order.menuItems.firstOrNull{it.id == itemId}
+            if (itemToReview == null){
+                ConsoleOutputHelper.printMessage("Блюда с таким номером нет в заказе!", OutputMessageType.Error)
+                continue
+            }
+
+            val reviewSource = readMarkAndComment(argument) ?: return false
+            argument.statisticsManager.reviewAdded(itemToReview, argument.session.user!!.login, reviewSource.first, reviewSource.second)
+        } while (!exit)
+
+        return true
+    }
+
+    private fun readMarkAndComment(argument: Application): Pair<Int, String>? {
+        var mark: Int? = null
+        do {
+            mark = ConsoleInputHelper.readIntCheckBackCommand("Введите оценку (число от 1 до 5): ", argument.backCommand) ?: return null
+
+            if (mark < 1 || mark > 5) {
+                ConsoleOutputHelper.printMessage("Оценка не может быть меньше 1 и больше 5!", OutputMessageType.Error)
+                mark = null
+            }
+        } while (mark == null)
+
+        print("Введите комментарий к отзыву: ")
+        val comment = readln()
+
+        return if (comment == argument.backCommand) null else Pair(mark, comment)
     }
 }
