@@ -12,7 +12,13 @@ import org.example.utils.ioHelpers.OutputMessageType
  */
 class RemoveMenuItemCommand(override var description: String = "Удалить блюдо") : Command<Application> {
     override fun execute(argument: Application) {
-        // TODO: подумать про проверку меню на пустоту
+        if (!argument.menuStorage.getMenuItems().any()) {
+            ConsoleOutputHelper.printMessage("Меню пусто", OutputMessageType.Info)
+            println()
+            ConsoleInputHelper.readEnterPress()
+            return
+        }
+
         var itemToRemove: MenuItem? = null
 
         do {
