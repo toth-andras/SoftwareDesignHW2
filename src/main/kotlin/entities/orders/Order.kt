@@ -32,8 +32,10 @@ class Order private constructor(var id: Int,
                                 var priority: Int,
                                 private var _totalPrice: Int,
                                 private var _timeToCook: Int,
-                                val date: LocalDateTime,
-                                private val _lock: Lock = ReentrantLock()) {
+                                val date: LocalDateTime) {
+    @kotlinx.serialization.Transient
+    private val _lock: Lock = ReentrantLock()
+
     /**
      * Создает новый заказ.
      * @param id идентификатор заказа.
