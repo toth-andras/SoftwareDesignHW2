@@ -87,6 +87,7 @@ class Order private constructor(var id: Int,
 
         _totalPrice += menuItem.price * portions
         _timeToCook += menuItem.timeToCook * portions
+        priority += menuItem.price * portions
     }
 
     /**

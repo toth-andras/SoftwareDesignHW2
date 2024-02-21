@@ -14,6 +14,10 @@ class CookingManager(val workersNum: Int) {
     private val _lock: Lock = ReentrantLock()
     private val _tasks: PriorityQueue<CookingTask> = PriorityQueue(CookingTaskComparator())
     private val _workers: MutableList<CookingWorker> = mutableListOf()
+    // По достижении определённого количетсва вставок очередь пересоздается — это гарантирует,
+    // что изменение приоритета заказа при добавлении в него новых блюд будет учтено.
+    private var _insertionsCounter: Int = 0
+    private val _insertionsToRefresh: Int = 7
 
     init {
         require(workersNum > 0) {"Количетсво обработчиков заказов должно быть положительным."}
@@ -29,6 +33,12 @@ class CookingManager(val workersNum: Int) {
     fun addTask(task: CookingTask) {
         _lock.lock()
         _tasks.add(task)
+        _insertionsCounter++
+        if (_insertionsCounter == _insertionsToRefresh) {
+            refreshQueue()
+            _insertionsCounter = 0
+        }
+
         _lock.unlock()
     }
 
@@ -68,5 +78,19 @@ class CookingManager(val workersNum: Int) {
         for (i in 1..<workersNum) {
             _workers[i].stopWorking()
         }
+    }
+
+    /**
+     * Пересоздает очередь, чтобы гарантировать, что изменение приоритета заказа при
+     * добавлении в него блюд будет учтено.
+     */
+    private fun refreshQueue() {
+        if (_tasks.isEmpty() || _tasks.size == 1) {
+            return
+        }
+
+        val items = _tasks.toList()
+        _tasks.clear()
+        _tasks.addAll(items)
     }
 }

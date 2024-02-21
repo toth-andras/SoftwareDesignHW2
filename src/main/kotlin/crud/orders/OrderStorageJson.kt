@@ -49,7 +49,8 @@ class OrderStorageJson(private val sourcePath: String): OrderStorage {
 
     override fun createOrder(user: User, menuItems: List<MenuItem>): Order {
         val order = Order(_nextId++, user, menuItems)
-        order.priority = _random.nextInt(0, 10)
+        // Не самая справедливая система приоретизации, но требований никаких не было.
+        order.priority = order.totalPrice
         _orders[order.id] = order
         save()
         orderCreated(order)
