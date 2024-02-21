@@ -4,6 +4,7 @@ import org.example.Application
 import org.example.commands.Command
 import org.example.entities.orders.Order
 import org.example.entities.orders.OrderStatus
+import org.example.entities.statistics.Review
 import org.example.utils.ioHelpers.ConsoleInputHelper
 import org.example.utils.ioHelpers.ConsoleOutputHelper
 import org.example.utils.ioHelpers.OutputMessageType
@@ -91,10 +92,10 @@ class PayForOrderCommand(override var description: String = "Оплатить з
     private fun readMarkAndComment(argument: Application): Pair<Int, String>? {
         var mark: Int? = null
         do {
-            mark = ConsoleInputHelper.readIntCheckBackCommand("Введите оценку (число от 1 до 5): ", argument.backCommand) ?: return null
+            mark = ConsoleInputHelper.readIntCheckBackCommand("Введите оценку (число от ${Review.minimalMark} до ${Review.maxMark}): ", argument.backCommand) ?: return null
 
-            if (mark < 1 || mark > 5) {
-                ConsoleOutputHelper.printMessage("Оценка не может быть меньше 1 и больше 5!", OutputMessageType.Error)
+            if (mark < Review.minimalMark || mark > Review.maxMark) {
+                ConsoleOutputHelper.printMessage("Оценка не может быть меньше ${Review.minimalMark} и больше ${Review.maxMark}!", OutputMessageType.Error)
                 mark = null
             }
         } while (mark == null)
