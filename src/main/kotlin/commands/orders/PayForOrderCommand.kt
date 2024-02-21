@@ -54,8 +54,15 @@ class PayForOrderCommand(override var description: String = "Оплатить з
                 orderToPay = null
                 continue
             }
-            // Проверка на то, что пользователь является автором заказа, не добавлнеа,
-            // чтобы один посетитель мог заплатить за другого.
+
+            if (orderToPay.userId != argument.session.user!!.id) {
+                ConsoleOutputHelper.printMessage("Выбранный Вами заказ принадлежит другому пользователю", OutputMessageType.Warning)
+                print("Вы действительно хотите оплатить данный заказ (Y/N): ")
+                if (readln() != "Y") {
+                    orderToPay = null
+                    continue
+                }
+            }
         } while (orderToPay == null)
 
         return orderToPay
