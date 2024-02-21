@@ -35,6 +35,7 @@ class LoginCommand(override var description: String = "Войти в аккау�
         ConsoleOutputHelper.printMessage(
             "Успешная авторизация пользователя ${argument.session.user!!.login}",
             OutputMessageType.Success)
+        println()
         ConsoleInputHelper.readEnterPress()
 
         argument.state = MainMenuState(argument, argument.state)
