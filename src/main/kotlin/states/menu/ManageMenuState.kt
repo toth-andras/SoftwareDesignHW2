@@ -1,7 +1,7 @@
 package org.example.states.menu
 
 import org.example.Application
-import org.example.commands.factories.ManageMenuStateCommandFactory
+import org.example.factories.commands.ManageMenuStateCommandFactory
 import org.example.states.ApplicationState
 import org.example.states.InitialState
 import org.example.utils.AuthChecker

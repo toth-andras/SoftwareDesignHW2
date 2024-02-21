@@ -1,11 +1,10 @@
-package org.example.commands.factories
+package org.example.factories.commands
 
 import org.example.Application
 import org.example.commands.Command
 import org.example.commands.auth.DeleteAccountCommand
 import org.example.commands.auth.ExitCommand
 import org.example.commands.auth.LogoutCommand
-import org.example.commands.auth.RegisterCommand
 import org.example.commands.navigation.MainMenuCommand
 
 /**

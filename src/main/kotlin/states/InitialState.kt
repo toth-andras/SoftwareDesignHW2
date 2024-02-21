@@ -1,8 +1,8 @@
 package org.example.states
 import org.example.Application
-import org.example.commands.factories.CommandFactory
-import org.example.commands.factories.InitialStateNoUserCommandFactory
-import org.example.commands.factories.InitialStateUserInCommandFactory
+import org.example.factories.commands.CommandFactory
+import org.example.factories.commands.InitialStateNoUserCommandFactory
+import org.example.factories.commands.InitialStateUserInCommandFactory
 import org.example.utils.CommandReader
 
 /**

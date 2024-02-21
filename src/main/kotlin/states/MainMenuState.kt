@@ -1,9 +1,9 @@
 package org.example.states
 
 import org.example.Application
-import org.example.commands.factories.CommandFactory
-import org.example.commands.factories.MainMenuStateAdminCommandFactory
-import org.example.commands.factories.MainMenuStateVisitorCommandFactory
+import org.example.factories.commands.CommandFactory
+import org.example.factories.commands.MainMenuStateAdminCommandFactory
+import org.example.factories.commands.MainMenuStateVisitorCommandFactory
 import org.example.utils.AuthChecker
 import org.example.utils.CommandReader
 

@@ -1,4 +1,4 @@
-package org.example.commands.factories
+package org.example.factories.commands
 
 import org.example.commands.Command
 
