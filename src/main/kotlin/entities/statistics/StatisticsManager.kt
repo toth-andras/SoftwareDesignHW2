@@ -10,11 +10,6 @@ import org.example.utils.extensions.LocalDateTimeExtension.Companion.now
  * Осуществляет контроль над сбором статистики по блюдам.
  */
 class StatisticsManager(val statisticsStorage: MenuItemStatisticsStorage) {
-    init {
-        statisticsStorage.initialize()
-    }
-
-
     /**
      * Обработка добавления в меню нового блюда.
      */
