@@ -28,7 +28,7 @@ class PayForOrderCommand(override var description: String = "Оплатить з
         if (readln() != "Y") return
 
         if (readReview(orderToPay, argument)) {
-            ConsoleOutputHelper.printMessage("Отзыв(ы) сохранены", OutputMessageType.Success)
+            ConsoleOutputHelper.printMessage("Отзыв(ы) сохранен(ы)", OutputMessageType.Success)
             ConsoleInputHelper.readEnterPress()
         }
     }

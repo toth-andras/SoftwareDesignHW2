@@ -9,7 +9,7 @@ import org.example.utils.ioHelpers.OutputMessageType
 /**
  * Команда, переводящая приложение в состояние выхода из учётной записи.
  */
-class LogoutCommand(override var description: String = "Выйти из учётной записи.") : Command<Application> {
+class LogoutCommand(override var description: String = "Выйти из учётной записи") : Command<Application> {
     override fun execute(argument: Application) {
         print("Выйти из учётной записи (Y/N): ")
         if (readln() == "Y") {
