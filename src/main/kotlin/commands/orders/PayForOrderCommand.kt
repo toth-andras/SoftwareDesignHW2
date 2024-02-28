@@ -45,6 +45,11 @@ class PayForOrderCommand(override var description: String = "Оплатить з
                 continue
             }
             if (orderToPay.status == OrderStatus.Paid) {
+                if (orderToPay.userId != argument.session.user!!.id) {
+                    ConsoleOutputHelper.printMessage("Заказа с таким номером нет!", OutputMessageType.Error)
+                    orderToPay = null
+                    continue
+                }
                 ConsoleOutputHelper.printMessage("Заказ уже оплачен")
                 orderToPay = null
                 continue
