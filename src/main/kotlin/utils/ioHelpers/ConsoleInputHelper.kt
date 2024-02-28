@@ -103,6 +103,10 @@ class ConsoleInputHelper {
                     ConsoleOutputHelper.printMessage("Блюда с таким номером нет в меню!", OutputMessageType.Error)
                     continue
                 }
+                if (menuItem.quantity == 0) {
+                    ConsoleOutputHelper.printMessage("Данное блюдо недоступно!", OutputMessageType.Error)
+                    continue
+                }
 
                 ConsoleOutputHelper.printMessage("Доступно ${menuItem.quantity} порций блюда")
 

@@ -14,7 +14,7 @@ import org.example.utils.orderPresentation.OrderVisitorPresentation
  */
 class CreateOrderCommand(override var description: String = "Добавить заказ") : Command<Application> {
     override fun execute(argument: Application) {
-        ConsoleOutputHelper.displayMenu(argument.menuStorage.getMenuItems(), MenuItemVisitorPresentation())
+        ConsoleOutputHelper.displayMenu(argument.menuStorage.getMenuItems().filter { it.quantity > 0 }, MenuItemVisitorPresentation())
         println()
         val orderItems: List<Pair<MenuItem, Int>> = ConsoleInputHelper.readMenuItems(argument.menuStorage, argument.backCommand) ?: return
         if (orderItems.isEmpty()) {
