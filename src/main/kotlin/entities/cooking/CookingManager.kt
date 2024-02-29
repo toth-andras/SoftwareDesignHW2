@@ -10,17 +10,19 @@ import java.util.concurrent.locks.ReentrantLock
  * Осуществляет контроль над всеми заказами, требующими приготовления.
  * @param workersNum — количетсво обработчиков заказов, работающих одновременно.
  */
-class CookingManager(val workersNum: Int) {
+class CookingManager(var workersNum: Int) {
     private val _lock: Lock = ReentrantLock()
     private val _tasks: PriorityQueue<CookingTask> = PriorityQueue(CookingTaskComparator())
     private val _workers: MutableList<CookingWorker> = mutableListOf()
     // По достижении определённого количетсва вставок очередь пересоздается — это гарантирует,
     // что изменение приоритета заказа при добавлении в него новых блюд будет учтено.
     private var _insertionsCounter: Int = 0
-    private val _insertionsToRefresh: Int = 7
+    private val _insertionsToRefresh: Int = 5
 
     init {
         require(workersNum > 0) {"Количетсво обработчиков заказов должно быть положительным."}
+        // Я не знаю, почему, но без этого всегда создается на один поток меньше...
+        workersNum++
         for (i in 1..workersNum) {
             _workers.add(CookingWorker(this))
         }
@@ -61,7 +63,7 @@ class CookingManager(val workersNum: Int) {
      * Запускает работу над заказами.
      */
     fun startWorking() {
-        val executor = Executors.newFixedThreadPool(workersNum)
+        val executor = Executors.newFixedThreadPool(workersNum+1)
 
         for (i in 1..workersNum) {
             executor.submit(Callable {
