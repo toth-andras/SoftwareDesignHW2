@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="" />
+    <list default="true" id="ec02e895-def5-4f34-9d11-1576a735d9ba" name="Changes" comment="Changed the architecture of menu entity, so it will provide bigger flexibility.">
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/crud/menu/MenuItemStorage.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +17,39 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SoftwareDesignHW2" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 0
@@ -29,15 +62,74 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build SoftwareDesignHW2.executor": "Run",
+    "Gradle.SoftwareDesignHW2 [build].executor": "Run",
+    "Kotlin.MainKt.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "develop",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/Users/totandras/Учёба/Второй курс/КПО/ДЗ/SoftwareDesignHW2/src/main/kotlin/Main.kt",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin/utils" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="crud" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle build" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Kotlin.MainKt">
+    <configuration name="SoftwareDesignHW2 [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.MainKt" />
+      <module name="SoftwareDesignHW2.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.MainKt" />
+        <item itemvalue="Gradle.SoftwareDesignHW2 [build]" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,22 +138,87 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708170008460</updated>
-      <workItem from="1708170009665" duration="1000" />
+      <workItem from="1708170009665" duration="3640000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit.">
+      <option name="closed" value="true" />
+      <created>1708170140053</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708170140053</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added basic auth entities">
+      <option name="closed" value="true" />
+      <created>1708170427611</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708170427611</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added basic auth logic.">
+      <option name="closed" value="true" />
+      <created>1708170704080</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708170704080</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added data directory.">
+      <option name="closed" value="true" />
+      <created>1708170894584</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708170894584</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added entity for menu.">
+      <option name="closed" value="true" />
+      <created>1708171790261</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708171790261</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Reorganized storage architecture.">
+      <option name="closed" value="true" />
+      <created>1708172284204</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708172284204</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Started creating crud logic for menu items.">
+      <option name="closed" value="true" />
+      <created>1708172788830</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708172788830</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed the architecture of menu entity, so it will provide bigger flexibility.">
+      <option name="closed" value="true" />
+      <created>1708173055564</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708173055564</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/Main.kt</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit." />
+    <MESSAGE value="Added basic auth entities" />
+    <MESSAGE value="Added basic auth logic." />
+    <MESSAGE value="Added data directory." />
+    <MESSAGE value="Added entity for menu." />
+    <MESSAGE value="Reorganized storage architecture." />
+    <MESSAGE value="Started creating crud logic for menu items." />
+    <MESSAGE value="Changed the architecture of menu entity, so it will provide bigger flexibility." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the architecture of menu entity, so it will provide bigger flexibility." />
   </component>
 </project>
